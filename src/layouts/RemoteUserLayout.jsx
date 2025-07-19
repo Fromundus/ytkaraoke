@@ -45,6 +45,7 @@ function RemoteUserLayout() {
 
         if(userKaraokeId && id && ((userKaraokeId)?.toString() !== (id)?.toString())){
             logout();
+            console.log("logout");
         }
     }, [userKaraokeId]);
 

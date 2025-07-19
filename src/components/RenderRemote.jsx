@@ -156,106 +156,108 @@ const RenderRemote = () => {
         onClick={() => navigate('/admin')}
       />}
 
-      <Card className={"mt-8"} title={id}>
-        <div className='w-full grid grid-rows-3 gap-4'>
-          <div className='grid grid-cols-1 gap-4'>
-            {/* <Button
-              label={!loading && <FaPowerOff />}
-              className={"bg-white text-xl text-black flex items-center justify-center h-14"}
-              loading={loading}
-              disabled={loading}
-              onClick={() => submitAction('off')}
-            /> */}
+      {karaoke && <>
+        <Card className={"mt-8"} title={id}>
+          <div className='w-full grid grid-rows-3 gap-4'>
+            <div className='grid grid-cols-1 gap-4'>
+              {/* <Button
+                label={!loading && <FaPowerOff />}
+                className={"bg-white text-xl text-black flex items-center justify-center h-14"}
+                loading={loading}
+                disabled={loading}
+                onClick={() => submitAction('off')}
+              /> */}
+              <Button
+                label={!loading && <FaArrowsRotate  />}
+                className={"bg-white text-xl text-black flex items-center justify-center h-14"}
+                loading={loading}
+                disabled={loading}
+                onClick={() => submitAction('restart')}
+              />
+            </div>
+            <div className='grid grid-cols-3 gap-4'>
+              <Button
+                label={!loading && <FaPlay />}
+                className={"bg-green-500 text-xl flex items-center justify-center h-14"}
+                loading={loading}
+                disabled={loading}
+                onClick={() => submitAction('play')}
+              />
+              <Button
+                label={!loading && <FaPause />}
+                className={"bg-gray-500 text-xl flex items-center justify-center h-14"}
+                loading={loading}
+                disabled={loading}
+                onClick={() => submitAction('pause')}
+              />
+              <Button
+                label={!loading && <FaStop />}
+                className={"bg-primary text-xl flex items-center justify-center h-14"}
+                loading={loading}
+                disabled={loading}
+                onClick={() => submitAction('stopsong')}
+              />
+            </div>
+            <div className='grid grid-cols-2 gap-4'>
+              <Button
+                label={!loading && <FaVolumeMute />}
+                className={"bg-gray-500 text-xl flex items-center justify-center h-14"}
+                loading={loading}
+                disabled={loading}
+                onClick={() => submitAction('mute')}
+              />
+              <Button
+                label={!loading && <FaVolumeHigh />}
+                className={"bg-gray-500 text-xl flex items-center justify-center h-14"}
+                loading={loading}
+                disabled={loading}
+                onClick={() => submitAction('unmute')}
+              />
+              {/* <Button
+                label={!loading && <FaFastBackward  />}
+                className={"bg-gray-500 text-xl flex items-center justify-center h-14"}
+                loading={loading}
+                disabled={loading}
+                onClick={() => submitAction('previous')}
+              />
+              <Button
+                label={!loading && <FaFastForward  />}
+                className={"bg-gray-500 text-xl flex items-center justify-center h-14"}
+                loading={loading}
+                disabled={loading}
+                onClick={() => submitAction('next')}
+              /> */}
+            </div>
+          </div>
+        </Card>
+        <Card className={"mt-4"} title={"Songbook"}>
+          <div className='w-full flex items-center gap-2'>
+            <Input 
+              id="search"
+              className={"w-full"}
+              type={"text"}
+              name={"search"}
+              onChange={handleChange}
+              value={search}
+              placeholder={"Search..."}
+              noTop={true}
+              disabled={searchLoading}
+              error={errors.name}
+            />
             <Button
-              label={!loading && <FaArrowsRotate  />}
-              className={"bg-white text-xl text-black flex items-center justify-center h-14"}
-              loading={loading}
-              disabled={loading}
-              onClick={() => submitAction('restart')}
+              label={!searchLoading && <FaSearch />}
+              className={"bg-primary text-xl flex items-center justify-center"}
+              loading={searchLoading}
+              disabled={searchLoading}
+              onClick={handleSearch}
             />
           </div>
-          <div className='grid grid-cols-3 gap-4'>
-            <Button
-              label={!loading && <FaPlay />}
-              className={"bg-green-500 text-xl flex items-center justify-center h-14"}
-              loading={loading}
-              disabled={loading}
-              onClick={() => submitAction('play')}
-            />
-            <Button
-              label={!loading && <FaPause />}
-              className={"bg-gray-500 text-xl flex items-center justify-center h-14"}
-              loading={loading}
-              disabled={loading}
-              onClick={() => submitAction('pause')}
-            />
-            <Button
-              label={!loading && <FaStop />}
-              className={"bg-primary text-xl flex items-center justify-center h-14"}
-              loading={loading}
-              disabled={loading}
-              onClick={() => submitAction('stopsong')}
-            />
-          </div>
-          <div className='grid grid-cols-2 gap-4'>
-            <Button
-              label={!loading && <FaVolumeMute />}
-              className={"bg-gray-500 text-xl flex items-center justify-center h-14"}
-              loading={loading}
-              disabled={loading}
-              onClick={() => submitAction('mute')}
-            />
-            <Button
-              label={!loading && <FaVolumeHigh />}
-              className={"bg-gray-500 text-xl flex items-center justify-center h-14"}
-              loading={loading}
-              disabled={loading}
-              onClick={() => submitAction('unmute')}
-            />
-            {/* <Button
-              label={!loading && <FaFastBackward  />}
-              className={"bg-gray-500 text-xl flex items-center justify-center h-14"}
-              loading={loading}
-              disabled={loading}
-              onClick={() => submitAction('previous')}
-            />
-            <Button
-              label={!loading && <FaFastForward  />}
-              className={"bg-gray-500 text-xl flex items-center justify-center h-14"}
-              loading={loading}
-              disabled={loading}
-              onClick={() => submitAction('next')}
-            /> */}
-          </div>
-        </div>
-      </Card>
-      <Card className={"mt-4"} title={"Songbook"}>
-        <div className='w-full flex items-center gap-2'>
-          <Input 
-            id="search"
-            className={"w-full"}
-            type={"text"}
-            name={"search"}
-            onChange={handleChange}
-            value={search}
-            placeholder={"Search..."}
-            noTop={true}
-            disabled={searchLoading}
-            error={errors.name}
-          />
-          <Button
-            label={!searchLoading && <FaSearch />}
-            className={"bg-primary text-xl flex items-center justify-center"}
-            loading={searchLoading}
-            disabled={searchLoading}
-            onClick={handleSearch}
-          />
-        </div>
-        {searchLoading && <div className='text-center w-full justify-center'>Searching youtube...</div>}
-        {searchResults?.length > 0 && !searchLoading && <div className='flex flex-col gap-2'>
-          {renderResults}
-        </div>}
-      </Card>
+          {searchLoading && <div className='text-center w-full justify-center'>Searching youtube...</div>}
+          {searchResults?.length > 0 && !searchLoading && <div className='flex flex-col gap-2'>
+            {renderResults}
+          </div>}
+        </Card>
+      </>}
     </AdminPage>
   )
 }

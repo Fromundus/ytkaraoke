@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import axiosClient from '../axios-client';
 
 function GuestLayout() {
-    const { role, id, token, name } = useStateContext();
+    const { role, id, token, name, userKaraokeId } = useStateContext();
 
     React.useEffect( () => {
         document.body.classList.remove('no-scroll');
@@ -16,8 +16,8 @@ function GuestLayout() {
         return <Navigate to={`${role}`} />
     }
 
-    if(role === "remote" && id && token && name){
-        return <Navigate to={`${role}/${id}`} />
+    if(role === "remote" && id && userKaraokeId && token && name){
+        return <Navigate to={`${role}/${userKaraokeId}`} />
     }
 
     return (

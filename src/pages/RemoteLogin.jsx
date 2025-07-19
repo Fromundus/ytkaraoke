@@ -17,7 +17,7 @@ function RemoteLogin({ noId }) {
     const navigate = useNavigate();
 
     const [isLoading, setIsloading] = React.useState(false);
-    const { setToken, setRole, setName, setId } = useStateContext();
+    const { setToken, setRole, setName, setId, setUserKaraokeId } = useStateContext();
     const [data, setData] = React.useState({
         karaoke_id: "",
         password: "",
@@ -61,6 +61,7 @@ function RemoteLogin({ noId }) {
                 setRole(res.data.role);
                 setName(res.data.name);
                 setId(res.data.id);
+                setUserKaraokeId(res.data.karaoke_id);
                 setIsloading(false);
             })
             .catch( (err) => {
