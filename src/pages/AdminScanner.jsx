@@ -74,6 +74,30 @@ const AdminScanner = () => {
         }
     };
 
+    const handleSubmitScan = async (karaokeId) => {
+        setLoading(true);
+        setErrors({});
+
+        try {
+            const res = await axiosClient.get(`/karaoke/${karaokeId}`);
+            console.log(res);
+            if(res.status === 200){
+                handleToggleRegisterModal(true);
+            }
+            setLoading(false);
+        } catch (err) {
+            console.log(err);
+            if(err.response.status === 404){
+                setErrors({
+                    karaokeId: "Karaoke is not found or is already registered."
+                });
+            } else {
+                setErrors(err.response.data.message);
+            }
+            setLoading(false);
+        }
+    };
+
     const handleUpdate = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -107,7 +131,12 @@ const AdminScanner = () => {
     return (
         <AdminPage className={'flex flex-col gap-8 items-center'}>
             <div className='max-w-sm'>
-                <Scanner onScan={(result) => setKaraokeId(result[0].rawValue)} />
+                <Scanner onScan={(result) => {
+                    if(result[0].rawValue){
+                        setKaraokeId(result[0].rawValue);
+                        handleSubmitScan(result[0].rawValue);
+                    }
+                }} />
             </div>
 
             <Card className={"w-full"}>

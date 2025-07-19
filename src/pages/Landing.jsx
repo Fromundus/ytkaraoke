@@ -89,7 +89,16 @@ const Landing = () => {
 
   if(karaokeId && karaoke?.status === "pending" && !loading){
     return (
-      <div className='min-h-[100vh] flex flex-col gap-4 items-center justify-center p-4 text-center'>
+      <>
+      <div className='flex sm:hidden md:hidden lg:hidden min-h-[100vh] items-center justify-center'>
+        <Button
+          label={"Connect to Remote"}
+          onClick={() => navigate('/r/login')}
+          className={"bg-primary"}
+        />
+      </div>
+
+      <div className='hidden sm:flex md:flex lg:flex min-h-[100vh] flex-col gap-4 items-center justify-center p-4 text-center'>
         <span className='text-xl font-semibold'>Register Karaoke</span>
         <div className='bg-white p-4 rounded-lg flex w-fit'>
           <div className='flex flex-col justify-center items-center text-center gap-2'>
@@ -100,6 +109,7 @@ const Landing = () => {
         <span className='text-2xl text-white'>KARAOKE ID: <span className='font-bold'>{karaokeId}</span></span>
         <p>Login to your account at <span className='font-semibold text-primary'>{`${process.env.REACT_APP_APP_URL}/login`}</span>. Scan the qrcode or copy the karaoke id. Create name and password, and register.</p>
       </div>
+      </>
     )
   }
 
