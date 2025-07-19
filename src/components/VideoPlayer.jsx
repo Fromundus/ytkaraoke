@@ -288,6 +288,15 @@ const VideoPlayer = ({ karaoke_id }) => {
         onReady={onPlayerReady}
         onEnd={onEnd}
       />
+      <div className="absolute top-0 left-0 w-full h-full z-50 flex items-center justify-center text-center">
+        <div className='absolute bottom-4 right-4 bg-white px-2 py-4 rounded-lg flex w-fit'>
+          <div className='flex flex-col justify-center items-center text-center'>
+            <QRCode className='w-20 h-20' value={`${process.env.REACT_APP_APP_URL}/r/login/${localStorage.getItem("karaokeId")}`} />
+            <span className='text-black text-xs font-semibold text-wrap mt-1'>Scan for remote.</span>
+            <span className='text-black text-xs font-semibold text-wrap'>ID: {localStorage.getItem("karaokeId")}</span>
+          </div>
+        </div>
+      </div>
 
       {/* <div className="flex gap-2 flex-wrap">
         <button onClick={play}>▶️ Play</button>
