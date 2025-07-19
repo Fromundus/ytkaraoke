@@ -4,6 +4,7 @@ import { useStateContext } from '../context/ContextProvider'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import axiosClient from '../axios-client';
+import { Bounce, ToastContainer } from 'react-toastify';
 
 function GuestLayout() {
     const { role, id, token, name, userKaraokeId } = useStateContext();
@@ -29,6 +30,19 @@ function GuestLayout() {
                 }} />
             </div>
             {/* <Footer /> */}
+            <ToastContainer
+                position="bottom-left"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable
+                pauseOnHover={false}
+                theme="light"
+                transition={Bounce}
+            />
         </div>
     )
 }

@@ -17,7 +17,7 @@ function AdminLayout() {
                     
                 }} />
             </div>
-            <Footer userType={1} />
+            <Footer />
             <ToastContainer
                 position="bottom-right"
                 autoClose={3000}
@@ -30,7 +30,7 @@ function AdminLayout() {
                 pauseOnHover={false}
                 theme="dark"
                 transition={Bounce}
-                />
+            />
         </div>
     )
 }

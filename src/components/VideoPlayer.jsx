@@ -5,6 +5,7 @@ import echo from '../echo';
 import FullscreenButton from './FullscreenButton';
 import bg from "../assets/blink-twice.mp4";
 import QRCode from 'react-qr-code';
+import notify from '../lib/notify';
 
 const extractVideoId = (url) => {
   const match = url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
@@ -94,6 +95,9 @@ const VideoPlayer = ({ karaoke_id }) => {
           break;
         case 'restart':
           window.location.reload();
+          break;
+        case 'userconnected':
+          notify("A user connected.")
           break;
         default:
           console.warn(`Unhandled action: ${e.action}`);
