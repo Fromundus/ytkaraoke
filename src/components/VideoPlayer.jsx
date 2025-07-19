@@ -88,6 +88,7 @@ const VideoPlayer = ({ karaoke_id }) => {
           previous();
           break;
         case 'songadded':
+          notify("New song added.")
           fetchPlayList();
           break;
         case 'stopsong':
