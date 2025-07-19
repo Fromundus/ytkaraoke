@@ -239,6 +239,9 @@ const VideoPlayer = ({ karaoke_id }) => {
 
         {/* Overlay content goes here */}
         <div className="absolute top-0 left-0 w-full h-full z-50 flex items-center justify-center text-center">
+          <div className='absolute bottom-4 left-4 bg-white p-1 rounded'>
+            <span className='text-black px-2'>Built and maintained by John Carl Cueva.</span>
+          </div>
           <div className='absolute top-4 left-4'>
             <FullscreenButton />
           </div>
@@ -293,6 +296,9 @@ const VideoPlayer = ({ karaoke_id }) => {
         onReady={onPlayerReady}
         onEnd={onEnd}
       />
+      <div className='absolute bottom-4 left-4 bg-white p-1 rounded'>
+        <span className='text-black px-2'>Built and maintained by John Carl Cueva.</span>
+      </div>
       <div className="absolute top-0 left-0 w-full h-full z-50 flex items-center justify-center text-center">
         <div className='absolute bottom-4 right-4 bg-white px-2 py-4 rounded-lg flex w-fit'>
           <div className='flex flex-col justify-center items-center text-center'>
